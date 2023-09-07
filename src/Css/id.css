@@ -1,0 +1,19 @@
+form#c-u-d-form {
+   text-align: left;
+}
+
+form#c-u-d-form>fieldset {
+   padding-top: .75rem;
+   padding-left: .75rem;
+   padding-bottom: .75rem;
+}
+
+form#c-u-d-form input#fname {
+   margin-left: 2rem;
+   padding-left: 0.5rem;
+}
+
+form#c-u-d-form input#lname {
+   margin-left: 2rem;
+   padding-left: 0.5rem;
+}

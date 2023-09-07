@@ -1,0 +1,99 @@
+.header{
+   text-align: center;
+}
+
+.f-buttom {
+   padding: 0.25rem;
+}
+
+.css-fix {
+   white-space: pre-wrap;
+}
+
+.t-ali-cen {
+   text-align: center;
+}
+
+.d-flex {
+   display: flex;
+}
+
+.ali-item-flex-end{
+   align-items: flex-end
+}
+
+.d-inline-gird {
+   display: inline-grid;
+}
+
+.g-2fr {
+   grid-template-columns: 1fr 1fr;
+}
+
+
+
+section.local-Timer {
+   display: flex;
+   justify-content: space-around;
+}
+
+section.read-table {
+   padding-top: .25rem;
+}
+
+
+tr.sheets-data-format>:nth-child(1) {
+   text-align: left;
+}
+
+tr.sheets-data-format>:nth-child(2) {
+   display: flex;
+   text-align: left;
+   gap: 10px;
+}
+
+tr.sheets-data-format>:nth-child(2)>:nth-child(1) {
+   text-align: right;
+   width: 55px;
+}
+
+tr.sheets-data-format>:nth-child(2)>:nth-child(2) {
+   text-align: left;
+}
+
+tr.sheets-data-format>:nth-child(2)>:nth-child(3) {
+   text-align: left;
+}
+
+tr.sheets-data-format>:nth-child(3) {
+   text-align: center;
+}
+
+tr.sheets-data-format>:nth-child(4) {
+   text-align: center;
+}
+
+tr.sheets-data-format>:nth-child(5) {
+   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+   tr.table-head {
+      font-size: 14px;
+   }
+
+   tr.sheets-data-format {
+      font-size: 12px;
+   }
+}
+
+@media screen and (max-width: 400px) {
+   tr.table-head {
+      font-size: 10px;
+   }
+
+   tr.sheets-data-format {
+      font-size: 8px;
+   }
+
+}
