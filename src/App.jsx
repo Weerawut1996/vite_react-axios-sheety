@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import DateAndTime from './Component/DateAndTime';
+import CreateSheets from './Component/A1_Create';
+import ReadSheets from './Component/A2_Read';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+   const [pageState, setpageState] = useState('A1 connect table')
+   const [countchage, setcountchage] = useState(0)
+   
+   useEffect(() => {
+      console.log(pageState);
+      // console.log(countchage);
+   }, [countchage])
+   
+   const refreshTable = () =>{
+      setcountchage(prevValue => prevValue === 0 ? 1 : 0)
+      setpageState('A1 refresh table')
+   }
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+   return (
+      <>
+         <header className='header'>
+            <h1>Vite + React, axios</h1>
+            <h2>Create, Read, Update, Delete</h2>
+            <hr />
+         </header>
+         <section className='local-Timer'>
+            <DateAndTime />
+         </section>
+         <section className='create-form'>
+            <CreateSheets/>
+         </section>
+         <section className='read-table'>
+            <button className='f-buttom' onClick={refreshTable}>Refresh</button>
+            <ReadSheets key={countchage} />
+         </section>
+      </>
+   )
 }
 
 export default App
+
