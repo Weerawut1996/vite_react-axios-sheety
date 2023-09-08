@@ -8,11 +8,11 @@ const DateAndTime = () => {
       return () => clearInterval(time_interval);
    }, []);
    return (
-      <section>
-         <div className='d-flex ali-item-flex-end'>
+      <section className='local-Timer'>
+         <div className=''>
             <h3>Today :</h3> <p>{day[new Date().getDay()]} {new Date().toLocaleDateString()}</p>
          </div>
-         <div className='d-flex ali-item-flex-end'>
+         <div className=''>
             <h3>Time :</h3> <p>{time_now}</p>
          </div>
       </section>
