@@ -30,14 +30,33 @@
    grid-template-columns: 1fr 1fr;
 }
 
-
+div.add-form{
+   display: inline-grid; 
+   grid-template-columns: auto auto;
+   gap: 0.5rem;
+   margin: 0.5rem 0;
+   align-items: baseline;
+}
+div.add-form > :nth-child(odd){
+   font-size: 1rem;
+   padding-right: 0.5rem;
+   text-align: right;
+}
+div.add-form > :nth-child(even){
+   padding: 0.5rem;
+   width: 200px;
+}
 
 section.local-Timer {
    display: flex;
-   justify-content: space-around;
+   justify-content: center;
+   gap: 1rem;
+}
+section.local-Timer > div > * {
+   display: inline-block;
 }
 
-section.read-table {
+section.read-table {   
    padding-top: .25rem;
 }
 
