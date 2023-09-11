@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { TelephoneFormat } from '../Function/PackFunction';
 
 const CreateSheets = (props) => {
    const [Prefix, setPrefix] = useState('0')
@@ -37,47 +38,51 @@ const CreateSheets = (props) => {
          });
    }
 
-   
+
    useEffect(() => {
       if (Prefix == "นาย") {
          setgender("ชาย")
       }
-      else if (Prefix == "นาง" || Prefix == "นางสาว" ){
+      else if (Prefix == "นาง" || Prefix == "นางสาว") {
          setgender("หญิง")
       }
-      else{ setgender("0")}
+      else { setgender("ไม่ระบุ") }
    }, [Prefix])
 
+
    return (
-      <section className= 'create-form t-ali-cen'>
+      <section className='create-form t-ali-cen'>
          <form onSubmit={add}>
             <div className='add-form'>
                <label>คำนำหน้า :</label>
                <select name="Prefix" onChange={(e) => setPrefix(e.target.value)} value={Prefix}>
-                  <option value="0">...คำนำหน้า...</option>
+                  <option value="ไม่ระบุ">...คำนำหน้า...</option>
                   <option value="นาย">นาย</option>
                   <option value="นาง">นาง</option>
                   <option value="นางสาว">นางสาว</option>
                </select>
                <label>ชื่อ :</label>
-               <input type="text" placeholder="First name" onChange={(e) => setFirst_name(e.target.value)} value={First_name} required/>
+               <input type="search" placeholder="First name" onChange={(e) => setFirst_name(e.target.value)} value={First_name} required />
                {/* ไม่จำเป็นต้องกำหนด id ใน input tag */}
                <label>นามสกุล : </label>
-               <input type="text" placeholder="Last name" onChange={(e) => setLast_name(e.target.value)} value={Last_name} required/>
+               <input type="search" placeholder="Last name" onChange={(e) => setLast_name(e.target.value)} value={Last_name} required />
                <label>เพศ : </label>
                <select name="Gender" onChange={(e) => setgender(e.target.value)} value={gender} required>
-                  <option value="0">...ระบุเพศ...</option>
+                  <option value="ไม่ระบุ">...ระบุเพศ...</option>
                   <option value="ชาย">ชาย</option>
                   <option value="หญิง">หญิง</option>
                </select>
                <label>วันเกิด : </label>
                <input type="date" placeholder="Birth date" onChange={(e) => setBirth_date(e.target.value)} value={Birth_date} required />
                <label>เบอร์โทรศัพท์ : </label>
-               <input type="number" placeholder="Telephone" onChange={(e) => setTelephone(e.target.value)} value={Telephone} required />
+               <input type="search" placeholder="Telephone" maxLength="12" size="12" value={Telephone} required
+                  onChange={(e) => setTelephone(TelephoneFormat(e.target.value))} />
                <label>Email : </label>
                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={Email} required />
             </div><br />
-            <button type="submit">เพิ่มข้อมูล</button>
+            <input type="reset" value="Reset"
+               onClick={() => { setFirst_name(''); setLast_name(''); setBirth_date(''); setTelephone(''); setEmail('') }} />
+            <input type="submit" value="เพิ่มข้อมูล" />
          </form>
       </section>
    );
