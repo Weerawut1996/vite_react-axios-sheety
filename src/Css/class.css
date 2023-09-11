@@ -50,6 +50,7 @@ div.add-form > :nth-child(even){
 section.local-Timer {
    display: flex;
    justify-content: center;
+   align-items: flex-end;
    gap: 1rem;
 }
 section.local-Timer > div > * {
@@ -96,23 +97,5 @@ tr.sheets-data-format>:nth-child(5) {
    text-align: center;
 }
 
-@media screen and (max-width: 600px) {
-   tr.table-head {
-      font-size: 14px;
-   }
 
-   tr.sheets-data-format {
-      font-size: 12px;
-   }
-}
 
-@media screen and (max-width: 400px) {
-   tr.table-head {
-      font-size: 10px;
-   }
-
-   tr.sheets-data-format {
-      font-size: 8px;
-   }
-
-}
