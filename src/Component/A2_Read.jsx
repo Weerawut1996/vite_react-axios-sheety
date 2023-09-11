@@ -15,8 +15,7 @@ function ReadSheets() {
             console.log(response.data)
             const resdata = response.data.sheets1
             setdisplaydata(resdata?.map((val,i) => (
-               //loop map จำเป็นต้องมี key
-               
+               //loop map จำเป็นต้องมี key               
                
                <tr key={i} className="sheets-data-format">
                   <td>{val.employeeId}</td>
@@ -57,8 +56,6 @@ function ReadSheets() {
    useEffect(() => {
       sheetsfetch()
    }, [chageCount])
-
-
    return (
       <table>
          <thead>
