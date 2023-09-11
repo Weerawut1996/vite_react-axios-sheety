@@ -1,0 +1,10 @@
+@media screen and (max-width: 400px) {
+   tr.table-head {
+      font-size: 10px;
+   }
+
+   tr.sheets-data-format {
+      font-size: 8px;
+   }
+
+}
