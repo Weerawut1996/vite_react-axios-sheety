@@ -80,8 +80,7 @@ const CreateSheets = (props) => {
                <input type="search" placeholder="Telephone" maxLength="16" size="16" value={Telephone} required
                   onChange={(e) => setTelephone(TelephoneFormat(e.target.value))} />
                <label>Email : </label>
-               <input type="email" placeholder="Email" value={Email}
-                  onChange={(e) => { e.target.required = isRequired; setEmail(filterEmail(e, e.target.value)) }} />
+               <input type="email" placeholder="Email" onChange={(e) => setEmail(filterEmail(e.target.value))} value={Email} />
             </div><br />
             <input type="reset" value="Reset"
                onClick={() => { setFirst_name(''); setLast_name(''); setBirth_date(''); setTelephone(''); setEmail('') }} />

@@ -47,7 +47,7 @@ export function filterSymbols(input) {
    return input.replace(/[^a-zA-Zก-๙\s]/g, '');
 }
 
-export function filterEmail(e,input) {
+export function filterEmail(input) {
    console.log(e);
    //  return input.replace(/[^a-zA-Z0-9ก-๙\s]/g, ''); // ลบสัญลักษณ์ที่ไม่ใช่ตัวอักษร ตัวเลข และช่องว่าง
    return input.replace(/[^a-zA-Z0-9\s@._-]/g, '');
