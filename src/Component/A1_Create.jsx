@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { TelephoneFormat } from '../Function/PackFunction';
+import { TelephoneFormat, filterEmail, filterSymbols } from '../Function/PackFunction';
 
 const CreateSheets = (props) => {
    const [Prefix, setPrefix] = useState('0')
@@ -62,10 +62,12 @@ const CreateSheets = (props) => {
                   <option value="นางสาว">นางสาว</option>
                </select>
                <label>ชื่อ :</label>
-               <input type="search" placeholder="First name" onChange={(e) => setFirst_name(e.target.value)} value={First_name} required />
-               {/* ไม่จำเป็นต้องกำหนด id ใน input tag */}
+               <input type="search" placeholder="First name" value={First_name} required
+                  onChange={(e) => setFirst_name(filterSymbols(e.target.value))} />
+               {/* ใช้ useState จึงไม่จำเป็นต้องกำหนด id ใน input tag */}
                <label>นามสกุล : </label>
-               <input type="search" placeholder="Last name" onChange={(e) => setLast_name(e.target.value)} value={Last_name} required />
+               <input type="search" placeholder="Last name" value={Last_name} required
+                  onChange={(e) => setLast_name(filterSymbols(e.target.value))} />
                <label>เพศ : </label>
                <select name="Gender" onChange={(e) => setgender(e.target.value)} value={gender} required>
                   <option value="ไม่ระบุ">...ระบุเพศ...</option>
@@ -75,10 +77,11 @@ const CreateSheets = (props) => {
                <label>วันเกิด : </label>
                <input type="date" placeholder="Birth date" onChange={(e) => setBirth_date(e.target.value)} value={Birth_date} required />
                <label>เบอร์โทรศัพท์ : </label>
-               <input type="search" placeholder="Telephone" maxLength="12" size="12" value={Telephone} required
+               <input type="search" placeholder="Telephone" maxLength="16" size="16" value={Telephone} required
                   onChange={(e) => setTelephone(TelephoneFormat(e.target.value))} />
                <label>Email : </label>
-               <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={Email} required />
+               <input type="email" placeholder="Email" value={Email}
+                  onChange={(e) => { e.target.required = isRequired; setEmail(filterEmail(e, e.target.value)) }} />
             </div><br />
             <input type="reset" value="Reset"
                onClick={() => { setFirst_name(''); setLast_name(''); setBirth_date(''); setTelephone(''); setEmail('') }} />
