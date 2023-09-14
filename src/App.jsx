@@ -26,7 +26,7 @@ function App() {
          </header>
          <DateAndTime />
          <hr />
-         <CreateSheets />
+         <CreateSheets addsomenew= {refreshTable}/>
          <section className='read-table t-ali-cen'>
             <button className='f-buttom' onClick={refreshTable}>Refresh</button>
             <ReadSheets key={countchage} />
