@@ -1,3 +1,13 @@
+export function RandomId(length) {
+   let result = '';
+   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+   const charactersLength = characters.length;
+   for (let counter = 0; counter < length; counter++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
 export function convertDate(inputDate) {
    // แยกวันที่, เดือน และปี
    var parts = inputDate.split('/');
@@ -13,41 +23,52 @@ export function convertDate(inputDate) {
    var result = day + " " + monthName + " " + year;
    return result;
 }
-
+export function reformatInputDate(inputDate) {
+   // แยกวันที่, เดือน และปี
+   var parts = inputDate.split('-');
+   // console.log(parts);
+   var year = `${+parts[0] + 543}`;
+   var month = parts[1];
+   var day = parts[2];
+   // สร้างรูปแบบวันที่
+   var result = `${day}/${month}/${year}`;
+   return result;
+}
 export function TelephoneFormat(input) {
    if (input === "") {
       //input Empty
       return input;
    }
-
    // Use regular expression to extract numeric characters
-   const numericChars = input.match(/\d+/g);
-   let phone = numericChars.join('');
-   let phoneformatted = phone;
-
-   if (numericChars) {
-      if (phone.length > 10) {
-         phone = phone.substring(0, 10)
-         phoneformatted = phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 - $2 - $3');
-      }
-      else if (phone.length >= 7 && phone.length <= 10) {
-         phoneformatted = phone.replace(/(\d{3})(\d{3})(\d{1,4})/, '$1 - $2 - $3');
-      }
-      else if (phone.length >= 4) {
-         phoneformatted = phone.replace(/(\d{3})(\d{1,3})/, '$1 - $2');
-      }
-      else { phoneformatted = phone }
+   const detectOnlyNum = input.match(/\d+/g)
+   let phone = detectOnlyNum.join('');
+   if (phone.length > 10) {
+      phone = phone.substring(0, 10)
+      phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
    }
-   return phoneformatted;
+   else if (phone.length >= 7 && phone.length <= 10) {
+      phone = phone.replace(/(\d{3})(\d{3})(\d{1,4})/, '$1-$2-$3');
+   }
+   else if (phone.length >= 4) {
+      phone = phone.replace(/(\d{3})(\d{1,3})/, '$1-$2');
+   }
+   return phone;
 }
 
-
-export function filterSymbols(input) {
+export function filterSymbols(in_type, input) {
    //  return input.replace(/[^a-zA-Z0-9ก-๙\s]/g, ''); // ลบสัญลักษณ์ที่ไม่ใช่ตัวอักษร ตัวเลข และช่องว่าง
-   return input.replace(/[^a-zA-Zก-๙\s]/g, '');
+   if (input.length > 0 && input[0].match(/[0-9@._-]/)) {
+      return input = ''
+   }
+   else if (in_type === 'name') {
+      return input.replace(/[^a-zA-Zก-๙\s]/g, '');
+   }
+   else if (in_type === 'email') {
+      return input.replace(/[^a-zA-Z0-9\s@._-]/g, '');
+   }
+   else {
+      return input
+   }
 }
 
-export function filterEmail(input) {
-   //  return input.replace(/[^a-zA-Z0-9ก-๙\s]/g, ''); // ลบสัญลักษณ์ที่ไม่ใช่ตัวอักษร ตัวเลข และช่องว่าง
-   return input.replace(/[^a-zA-Z0-9\s@._-]/g, '');
-}
+
