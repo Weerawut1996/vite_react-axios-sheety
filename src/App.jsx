@@ -8,7 +8,7 @@ function App() {
    const [countchage, setcountchage] = useState(0)
 
    useEffect(() => {
-      console.log(pageState);
+      // console.log(pageState);
       // console.log(countchage);
    }, [countchage])
 
