@@ -12,28 +12,32 @@ export function convertDate(inputDate) {
    // แยกวันที่, เดือน และปี
    var parts = inputDate.split('/');
    // console.log(parts);
-   var day = parts[0];
+   var day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
    var month = parts[1];
    var year = parts[2];
    // รายการของชื่อเดือน
-   var monthNames = ["ม.ค", "ก.พ", "มี.ค", "เม.ย", "พ.ค", "มิ.ย", "ก.ค", "ส.ค", "ก.ย", "ต.ค", "พ.ย", "ธ.ค"];
+   var monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
    // แปลงเดือนเป็นชื่อเดือน
    var monthName = monthNames[parseInt(month) - 1];
    // สร้างรูปแบบวันที่
    var result = day + " " + monthName + " " + year;
    return result;
 }
-export function reformatInputDate(inputDate) {
-   // แยกวันที่, เดือน และปี
-   var parts = inputDate.split('-');
-   // console.log(parts);
-   var year = `${+parts[0] + 543}`;
-   var month = parts[1];
-   var day = parts[2];
-   // สร้างรูปแบบวันที่
-   var result = `${day}/${month}/${year}`;
-   return result;
+
+export function CalculateAge(birthday) {
+   //input = 25 ม.ค. 2542
+   const monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."]
+   const parts = birthday.split(' ');
+   const month = monthNames.indexOf(parts[1]) < 10 ? `0${monthNames.indexOf(parts[1]) + 1}` : monthNames.indexOf(parts[1]) + 1;
+   const ReFormeted = new Date(`${month}/${parts[0]}/${parts[2] - 543}`)//01/25/2001
+   const today = new Date();
+   let age = today.getFullYear() - ReFormeted.getFullYear();
+   const sameMonth = today.getMonth() === ReFormeted.getMonth()
+   today.getMonth() < ReFormeted.getMonth() || (sameMonth && ReFormeted.getDate() > today.getDate()) ? age -= 1 : age
+   // Subtract 1 from age if birthday hasn't occurred yet this year
+   return age
 }
+
 export function TelephoneFormat(input) {
    if (input === "") {
       //input Empty
@@ -70,5 +74,9 @@ export function filterSymbols(in_type, input) {
       return input
    }
 }
+
+
+
+
 
 
