@@ -12,6 +12,3 @@ th,td{
    background-color: #242424;
 }
 
-@media screen and (max-width: 400px) {
-   th, td {padding: 0.25rem}
-}
