@@ -113,3 +113,9 @@ tr.sheets-data-format>:nth-child(5) {
 tr.sheets-data-format>:nth-child(6) {
    text-align: center;
 }
+tr.sheets-data-format>:nth-child(8) {
+   text-align: left;
+}
+.create-form{
+   padding: 0 1rem;
+}
