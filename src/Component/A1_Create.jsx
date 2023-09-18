@@ -15,9 +15,8 @@ const CreateSheets = (props) => {
    const [Birth_date, setBirth_date] = useState('2000-01-01')
    const [Telephone, setTelephone] = useState('')
    const [Email, setEmail] = useState('')
-   // console.log('มีการ log บรรทัดนี้ทุกครั้ง ที่มาการ ป้อนข้อมูลลง tag input');
-   const today = new Date().toLocaleDateString('th-TH')
    const updateTable = () => { props.addsomenew(); };
+   // console.log('มีการ log บรรทัดนี้ทุกครั้ง ที่มาการ ป้อนข้อมูลลง tag input');
 
    function add(e) {
       e.preventDefault() // e.preventDefault() ไว้ป้องกัน event web refed เมื่อกด supmit จาก form
@@ -25,7 +24,8 @@ const CreateSheets = (props) => {
       const newRank_id = Rank === "1" ? 'ABC' : Rank === "2" ? 'D45' : Rank === "3" ? 'XYZ' : Rank === "4" ? 'PYE' : '000';
       const newRank = Rank === "1" ? 'ระดับ 1 ABC' : Rank === "2" ? 'ระดับ 2 D45' : Rank === "3" ? 'ระดับ 3 XYZ' : '000';
       const newgender = gender === "1" ? 'ชาย' : gender === "2" ? 'หญิง' : 'ไม่ระบุ';
-      const nowBirth_date = convertDate(new Date(Birth_date).toLocaleDateString('th-TH'))
+      const nowBirth_date = convertDate(new Date(Birth_date).toLocaleDateString('th-TH'))      
+      const today = new Date().toLocaleDateString('th-TH')
       // console.log(`${newRank_id}-${newEmployee_id}`, newPrefix, First_name, Last_name, newgender);
       // console.log(nowBirth_date, Telephone, Email);
       const newEmployee_id = RandomId(8)
@@ -45,8 +45,8 @@ const CreateSheets = (props) => {
          }
       };
       axios.post('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1', newData)
-         .then(function (response) {
-            console.log(response);
+         .then(()=> {            
+            console.log('%c...','background: green; color: green;','Create ok and complete');
             updateTable()
          })
          .catch(function (error) {
@@ -100,7 +100,8 @@ const CreateSheets = (props) => {
             <label>วันเกิด : </label>
             <input
                type="date"
-               placeholder="วว / ดด / ค.ศ"
+               placeholder="วว / ดด / ค.ศ"               
+               max={new Date().toISOString().split("T")[0]}
                value={Birth_date} required
                onChange={(e) => setBirth_date(e.target.value)} />
             <label>เบอร์โทรศัพท์ : </label>
@@ -120,7 +121,7 @@ const CreateSheets = (props) => {
             <div className="rebuttom ">
                <input type="reset" value="Reset"
                   onClick={() => {
-                     console.log('reset');
+                     console.log('%c...','background: orange; color: orange;','Reset form');
                      setPrefix('0');
                      setRank('0');
                      setFirst_name('');
