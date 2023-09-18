@@ -49,16 +49,18 @@ form.add-form> :nth-child(even) {
    width: 250px;
 }
 
-form.add-form> div.rebuttom {
+form.add-form>div.rebuttom {
    padding: 00;
 }
-div.rebuttom{
+
+div.rebuttom {
    display: flex;
    padding: 0;
    justify-content: flex-start;
    gap: 0.5rem;
 }
-div.rebuttom > input {
+
+div.rebuttom>input {
    width: 60px;
    height: 30px;
 }
@@ -83,22 +85,22 @@ tr.sheets-data-format>:nth-child(1) {
    text-align: left;
 }
 
-tr.sheets-data-format>:nth-child(3)> p {
+tr.sheets-data-format>:nth-child(3)>p {
    display: flex;
    text-align: left;
    gap: 10px;
 }
 
-tr.sheets-data-format>:nth-child(3)> p>:nth-child(1) {
+tr.sheets-data-format>:nth-child(3)>p>:nth-child(1) {
    text-align: right;
    width: 55px;
 }
 
-tr.sheets-data-format>:nth-child(3)> p>:nth-child(2) {
+tr.sheets-data-format>:nth-child(3)>p>:nth-child(2) {
    text-align: left;
 }
 
-tr.sheets-data-format>:nth-child(3)> p>:nth-child(3) {
+tr.sheets-data-format>:nth-child(3)>p>:nth-child(3) {
    text-align: left;
 }
 
@@ -113,9 +115,19 @@ tr.sheets-data-format>:nth-child(5) {
 tr.sheets-data-format>:nth-child(6) {
    text-align: center;
 }
+
 tr.sheets-data-format>:nth-child(8) {
    text-align: left;
 }
-.create-form{
+
+.create-form {
    padding: 0 1rem;
+}
+
+.EditDelSheet {
+   display: flex;
+   gap:0.5rem;
+}
+.EditDelSheet>input[type=button] {
+   padding: 0.25rem;
 }
