@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import { CalculateAge } from '../Function/PackFunction';
+import UpdateDeleteSheet from './A3_UpdateDelete';
 
 function ReadSheets() {
    // use in 'app.jsx'
    const [displaydata, setdisplaydata] = useState([]);// set type array
    const [StatusCode, setStatusCode] = useState(<>On Load.....</>);
    const sheetsfetch = async () => {
-      const sheetsURL = 'https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1';
+      const sheetsURL = 'https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de--/addData/sheets1';
       await axios.get(sheetsURL)
          .then(response => {
             // console.log(response);
@@ -29,11 +30,11 @@ function ReadSheets() {
                   </td>
                   <td>{val.physicalGender}</td>
                   <td>{val.thaiBirthDate}</td>
-
                   <td>{CalculateAge(val.thaiBirthDate) < 0 ? '???' : CalculateAge(val.thaiBirthDate)}</td>
                   <td>{val.telephone}</td>
                   <td>{val.email}</td>
                   <td>{val.addTimeStamp}</td>
+                  <td> <UpdateDeleteSheet/></td>
                </tr>
             )))
          })
@@ -81,8 +82,8 @@ function ReadSheets() {
          </thead>
          <tbody>
             <tr><td colSpan={9}><p className='css-fix t-ali-cen'>{StatusCode}</p></td></tr>
-            <tr className="sheets-data-format"><td>ABC-E0Q998FA</td><td>ระดับ 1 ABC</td><td><p className="fullname"><span>นาย</span><span>ธาวัน</span><span>นันทพินิจ</span></p></td><td>ชาย</td><td>15/07/2540</td><td>26 ปี</td><td>090-095-1255</td><td>Waaaa123456@hhhhhhh.com</td><td>12 ก.ย 2566 15:34</td></tr>
-            <tr className="sheets-data-format"><td>D45-QJC7F61H</td><td>ระดับ 2 D45</td><td><p className="fullname"><span>นาง</span><span>ณิชา</span><span>วัฒนศักดิ์สกุล</span></p></td><td>หญิง</td><td>20/05/2539</td><td>27 ปี</td><td>084-555-4444</td><td>nizcha478@hGGG.com</td><td>13 ก.ย 2566 15:48</td></tr>
+            <tr className="sheets-data-format"><td>ABC-E0Q998FA</td><td>ระดับ 1 ABC</td><td><p className="fullname"><span>นาย</span><span>ธาวัน</span><span>นันทพินิจ</span></p></td><td>ชาย</td><td>15/07/2540</td><td>26 ปี</td><td>090-095-1255</td><td>Waaaa123456@hhhhhhh.com</td><td>12 ก.ย 2566 15:34</td><td><UpdateDeleteSheet id={'a1'}/></td></tr>
+            <tr className="sheets-data-format"><td>D45-QJC7F61H</td><td>ระดับ 2 D45</td><td><p className="fullname"><span>นาง</span><span>ณิชา</span><span>วัฒนศักดิ์สกุล</span></p></td><td>หญิง</td><td>20/05/2539</td><td>27 ปี</td><td>084-555-4444</td><td>nizcha478@hGGG.com</td><td>13 ก.ย 2566 15:48</td><td><UpdateDeleteSheet id={'a2'}/></td></tr>
             {displaydata}
          </tbody>
       </table>
