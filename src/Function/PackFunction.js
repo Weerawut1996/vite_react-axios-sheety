@@ -1,6 +1,6 @@
 export function RandomId(length) {
    let result = '';
-   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+   const characters = 'ABCDEFGH_JKLMNOPQRSTUVWXYZ123456789';
    const charactersLength = characters.length;
    for (let counter = 0; counter < length; counter++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -9,12 +9,13 @@ export function RandomId(length) {
 }
 
 export function convertDate(inputDate) {
-   // แยกวันที่, เดือน และปี
+   // แยกวันที่, เดือน และปี พ.ศ.
    var parts = inputDate.split('/');
    // console.log(parts);
    var day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
    var month = parts[1];
    var year = parts[2];
+   year + 543 > 3000 ? year -= 543 : year = year
    // รายการของชื่อเดือน
    var monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
    // แปลงเดือนเป็นชื่อเดือน
