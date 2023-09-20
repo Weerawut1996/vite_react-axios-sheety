@@ -3,7 +3,7 @@ import axios from 'axios';
 import { CalculateAge } from '../Function/PackFunction';
 import DeleteSheet from './A3_Delete';
 import UpdateSheet from './A4_Update.jsx';
-import { fakedata_1, fakedata_2 } from '../Function/fackdata';
+import { fakedata_1, fakedata_2 } from '../Function/fakedata';
 
 function ReadSheets(props) {
    // use in 'app.jsx'
