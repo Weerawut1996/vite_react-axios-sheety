@@ -1,6 +1,6 @@
 export function RandomId(length) {
    let result = '';
-   const characters = 'ABCDEFGH_JKLMNOPQRSTUVWXYZ123456789';
+   const characters = 'ABCDEFGHJKLMNOPQRSTUVWXYZ123456789';//remove I and zero(0)
    const charactersLength = characters.length;
    for (let counter = 0; counter < length; counter++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -9,13 +9,16 @@ export function RandomId(length) {
 }
 
 export function convertDate(inputDate) {
-   // แยกวันที่, เดือน และปี พ.ศ.
+   // console.log(inputDate);
+   // แยกวันที่, เดือน และปี ค.ศ.
    var parts = inputDate.split('/');
    // console.log(parts);
    var day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
    var month = parts[1];
    var year = parts[2];
-   year + 543 > 3000 ? year -= 543 : year = year
+   if ((year+533)>=2700) {
+      year -=543
+   }
    // รายการของชื่อเดือน
    var monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
    // แปลงเดือนเป็นชื่อเดือน
@@ -40,12 +43,9 @@ export function CalculateAge(birthday) {
 }
 
 export function TelephoneFormat(input) {
-   if (input === "") {
-      //input Empty
-      return input;
-   }
+   if (input.match(/\d+/g) === null) { return ''; }/*input not number*/
    // Use regular expression to extract numeric characters
-   const detectOnlyNum = input.match(/\d+/g)
+   const detectOnlyNum = input?.match(/\d+/g)
    let phone = detectOnlyNum.join('');
    if (phone.length > 10) {
       phone = phone.substring(0, 10)
@@ -62,7 +62,7 @@ export function TelephoneFormat(input) {
 
 export function filterSymbols(in_type, input) {
    //  return input.replace(/[^a-zA-Z0-9ก-๙\s]/g, ''); // ลบสัญลักษณ์ที่ไม่ใช่ตัวอักษร ตัวเลข และช่องว่าง
-   if (input.length > 0 && input[0].match(/[0-9@._-]/)) {
+   if (input.length > 0 && input[0].match(/[0-9@._ๆ-]/)) {
       return input = ''
    }
    else if (in_type === 'name') {
