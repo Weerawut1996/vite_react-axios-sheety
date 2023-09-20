@@ -29,7 +29,7 @@ function App() {
          <CreateSheets addsomenew= {refreshTable}/>
          <section className='read-table t-ali-cen'>
             <button className='f-buttom' onClick={refreshTable}>Refresh</button>
-            <ReadSheets key={countchage} />
+            <ReadSheets key={countchage} Updel= {refreshTable}/>
          </section>
       </>
    )
