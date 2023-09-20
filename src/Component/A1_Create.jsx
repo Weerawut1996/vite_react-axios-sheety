@@ -12,23 +12,33 @@ const CreateSheets = (props) => {
    const [First_name, setFirst_name] = useState('')
    const [Last_name, setLast_name] = useState('')
    const [gender, setgender] = useState('')
-   const [Birth_date, setBirth_date] = useState('2000-01-01')
+   const [Birth_date, setBirth_date] = useState('')
    const [Telephone, setTelephone] = useState('')
    const [Email, setEmail] = useState('')
    const updateTable = () => { props.addsomenew(); };
    // console.log('มีการ log บรรทัดนี้ทุกครั้ง ที่มาการ ป้อนข้อมูลลง tag input');
 
-   function add(e) {
-      e.preventDefault() // e.preventDefault() ไว้ป้องกัน event web refed เมื่อกด supmit จาก form
+   async function add(e) {
+      e.preventDefault() // e.preventDefault() ไว้ป้องกัน event web refed เมื่อกด supmit จาก form      
+      const response = await axios.get('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1');
+      // console.log(response.data.sheets1);
+      let emp_Id = []
+      for (const emp of response.data.sheets1) { emp_Id.push(emp.employeeId); }
+      // console.log(emp_Id);
       const newPrefix = Prefix === "1" ? 'นาย' : Prefix === "2" || Prefix === "3" ? 'นาง' : 'ไม่ระบุ';
       const newRank_id = Rank === "1" ? 'ABC' : Rank === "2" ? 'D45' : Rank === "3" ? 'XYZ' : Rank === "4" ? 'PYE' : '000';
       const newRank = Rank === "1" ? 'ระดับ 1 ABC' : Rank === "2" ? 'ระดับ 2 D45' : Rank === "3" ? 'ระดับ 3 XYZ' : '000';
       const newgender = gender === "1" ? 'ชาย' : gender === "2" ? 'หญิง' : 'ไม่ระบุ';
-      const nowBirth_date = convertDate(new Date(Birth_date).toLocaleDateString('th-TH'))      
+      const nowBirth_date = convertDate(new Date(Birth_date).toLocaleDateString('th-TH'))
+      console.log(nowBirth_date);
       const today = new Date().toLocaleDateString('th-TH')
       // console.log(`${newRank_id}-${newEmployee_id}`, newPrefix, First_name, Last_name, newgender);
       // console.log(nowBirth_date, Telephone, Email);
-      const newEmployee_id = RandomId(8)
+      let newEmployee_id = `${newRank_id}-${RandomId(8)}`
+      if (emp_Id.includes(newEmployee_id)) {
+         // console.log('มี id ซ้ำ');
+         newEmployee_id = RandomId(8)
+      }
       // loop check id ซ้ำ
       const newData = {
          sheets1: {
@@ -45,9 +55,17 @@ const CreateSheets = (props) => {
          }
       };
       axios.post('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1', newData)
-         .then(()=> {            
-            console.log('%c...','background: green; color: green;','Create ok and complete');
+         .then(() => {
+            console.log('%c..', 'background: green; color: green;', 'Create ok and complete');
             updateTable()
+            alert("add personal successful");
+            setPrefix('0');
+            setRank('0');
+            setFirst_name('');
+            setLast_name('');
+            setBirth_date('');
+            setTelephone('');
+            setEmail('')
          })
          .catch(function (error) {
             console.log(error);
@@ -97,13 +115,14 @@ const CreateSheets = (props) => {
                <option value="1">ชาย</option>
                <option value="2">หญิง</option>
             </select>
-            <label>วันเกิด : </label>
+            <label className='dateFormat' ><span >วันเกิด :</span><span>วว / ดด / ค.ศ</span></label>
             <input
                type="date"
-               placeholder="วว / ดด / ค.ศ"               
+               placeholder="วว / ดด / ค.ศ"
                max={new Date().toISOString().split("T")[0]}
                value={Birth_date} required
                onChange={(e) => setBirth_date(e.target.value)} />
+            
             <label>เบอร์โทรศัพท์ : </label>
             <input
                type="search"
@@ -121,7 +140,7 @@ const CreateSheets = (props) => {
             <div className="rebuttom ">
                <input type="reset" value="Reset"
                   onClick={() => {
-                     console.log('%c...','background: orange; color: orange;','Reset form');
+                     console.log('%c..', 'background: orange; color: orange;', 'Reset form');
                      setPrefix('0');
                      setRank('0');
                      setFirst_name('');
