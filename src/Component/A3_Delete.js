@@ -4,7 +4,7 @@ const DeleteSheet = async (id) => {
       //ได้ใช้
       console.log('del', id);
       if (id === 'Test-ABC-E0Q998FA' || id === 'Test-D45-QJC7F61H') {
-         alert(`ห้ามลมหรือแก้ id : ${id}`)
+         alert(`ห้ามลมหรือแก้ไข id : ${id}`)
          return;
       }
       //del
