@@ -1,5 +1,5 @@
 export const fakedata_1 ={
-   "employeeId": "Test-ABC-E0Q998FA",
+   "employeeId": "ABC-E0Q998FA-Test",
    "rank": "ระดับ 222 ABC",
    "prefix": "นาย",
    "firstName": "ณิ55ชา",
@@ -13,7 +13,7 @@ export const fakedata_1 ={
 }
 
 export const fakedata_2 ={
-   "employeeId": "Test-D45-QJC7F61H",
+   "employeeId": "Test-D45-QJC7F61H-Test",
    "rank": "ระดับ 111 ABC",
    "prefix": "นางสาว",
    "firstName": "ณิชาQJ",
