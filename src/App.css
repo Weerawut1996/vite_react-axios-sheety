@@ -3,12 +3,13 @@
 }
 
 table{
-   margin: .25rem auto 0;
    background-color: #fff;
 }
 
-th,td{
-   padding: 0.25rem 0.5rem;
+tr{
+   height: 30px;   
    background-color: #242424;
 }
-
+th,td{
+   padding: 0.25rem 0.5rem;
+}
