@@ -62,11 +62,11 @@ export function TelephoneFormat(input) {
 
 export function filterSymbols(in_type, input) {
    //  return input.replace(/[^a-zA-Z0-9ก-๙\s]/g, ''); // ลบสัญลักษณ์ที่ไม่ใช่ตัวอักษร ตัวเลข และช่องว่าง
-   if (input.length > 0 && input[0].match(/[0-9@._ๆ-]/)) {
+   if (input.length > 0 && input[0].match(/[0-9]/)) {
       return input = ''
    }
    else if (in_type === 'name') {
-      return input.replace(/[^a-zA-Zก-๙\s]/g, '');
+      return input.replace(/[^a-zA-Zก-ฮ\sฺํ.]/g, '');
    }
    else if (in_type === 'email') {
       return input.replace(/[^a-zA-Z0-9\s@._-]/g, '');
