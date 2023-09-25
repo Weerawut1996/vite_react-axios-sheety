@@ -9,16 +9,24 @@ export function RandomId(length) {
 }
 
 export function convertDate(inputDate) {
-   // console.log(inputDate);
-   // แยกวันที่, เดือน และปี ค.ศ.
+   // ตัวอย่างค่าที่รับ 25/9/2566 จาก new Date(1996-09-25).toLocaleDateString('th-TH')
+   // แยกวันที่, เดือน และปี พ.ศ.
    var parts = inputDate.split('/');
-   // console.log(parts);
    var day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
    var month = parts[1];
-   var year = parts[2];
-   if ((year+533)>=2700) {
-      year -=543
+   var year = +parts[2];// แปลงเป็น int
+   console.log(year);
+   if (year > 2700) {
+      // ถ้า ใน input[type=date] คือ 25/9/2566
+      // new Date(Birth_date).toLocaleDateString('th-TH') จะบวกเพิ่มไปอีก 543
+      // จะเป็น 25/9/3109
+      year -= 543
+      //ให้ค่า ปี ที่ป้อนมา -543
    }
+   if (year < 2000) {
+      year += 543
+   }
+   console.log(year);
    // รายการของชื่อเดือน
    var monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
    // แปลงเดือนเป็นชื่อเดือน
@@ -27,6 +35,16 @@ export function convertDate(inputDate) {
    var result = day + " " + monthName + " " + year;
    return result;
 }
+
+export function reDate_Th2En(day) {
+   // สำหรับแปลค่า จาก API ลง <input type="date"/>
+   //input = 25 ม.ค. 2542
+   const monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."]
+   const parts = day.split(' ');
+   const month = monthNames.indexOf(parts[1]) < 9 ? `0${monthNames.indexOf(parts[1]) + 1}` : monthNames.indexOf(parts[1]) + 1;
+   return `${parts[2] - 543}-${month}-${parts[0]}`// 2001-01-25
+}
+
 
 export function CalculateAge(birthday) {
    //input = 25 ม.ค. 2542
@@ -75,9 +93,3 @@ export function filterSymbols(in_type, input) {
       return input
    }
 }
-
-
-
-
-
-
