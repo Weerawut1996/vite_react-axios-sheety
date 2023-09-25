@@ -9,11 +9,11 @@ export const fakedata_1 ={
    "telephone": "084-183-2542",
    "email": "nicha_2537@hotmail.com",
    "addTimeStamp": "15 ก.ย 2566 15:50",
-   "id": "E0Q998FA"
+   "id": "a-1"
 }
 
 export const fakedata_2 ={
-   "employeeId": "Test-D45-QJC7F61H-Test",
+   "employeeId": "D45-QJC7F61H-Test",
    "rank": "ระดับ 111 ABC",
    "prefix": "นางสาว",
    "firstName": "ณิชาQJ",
@@ -23,5 +23,5 @@ export const fakedata_2 ={
    "telephone": "084-183-9999",
    "email": "nicha_9999@hotmail.com",
    "addTimeStamp": "15 ก.ย 2566 15:50",
-   "id": "QJC7F61H"
+   "id": "a-2"
 }
