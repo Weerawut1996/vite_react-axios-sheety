@@ -20,7 +20,7 @@ const CreateSheets = (props) => {
 
    async function add(e) {
       e.preventDefault() // e.preventDefault() ไว้ป้องกัน event web refed เมื่อกด supmit จาก form      
-      const response = await axios.get('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1');
+      const response = await axios.get('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de--/addData/sheets1');
       // console.log(response.data.sheets1);
       let emp_Id = []
       for (const emp of response.data.sheets1) { emp_Id.push(emp.employeeId); }
@@ -30,7 +30,7 @@ const CreateSheets = (props) => {
       const newRank = Rank === "1" ? 'ระดับ 1 ABC' : Rank === "2" ? 'ระดับ 2 D45' : Rank === "3" ? 'ระดับ 3 XYZ' : '000';
       const newgender = gender === "1" ? 'ชาย' : gender === "2" ? 'หญิง' : 'ไม่ระบุ';
       const nowBirth_date = convertDate(new Date(Birth_date).toLocaleDateString('th-TH'))
-      console.log(nowBirth_date);
+      // console.log(nowBirth_date);
       const today = new Date().toLocaleDateString('th-TH')
       // console.log(`${newRank_id}-${newEmployee_id}`, newPrefix, First_name, Last_name, newgender);
       // console.log(nowBirth_date, Telephone, Email);
@@ -91,10 +91,10 @@ const CreateSheets = (props) => {
             <label>ตำแหน่ง :</label>
             <select name="NewRank" onChange={(e) => setRank(e.target.value)} value={Rank}>
                <option value="0">...ตำแหน่ง...</option>
-               <option value="1">ตำแหน่ง ABC</option>
-               <option value="2">ตำแหน่ง D45</option>
-               <option value="3">ตำแหน่ง XYZ</option>
-               <option value="4">ตำแหน่ง PYE</option>
+               <option value="1">ABC</option>
+               <option value="2">D45</option>
+               <option value="3">XYZ</option>
+               <option value="4">PYE</option>
             </select>
             <label>ชื่อ :</label>
             <input
