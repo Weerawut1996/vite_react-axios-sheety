@@ -5,7 +5,7 @@ import DeleteSheet from './A3_Delete';
 import UpdateSheet from './A4_Update.jsx';
 import { fakedata_1, fakedata_2 } from '../Function/fakedata';
 
-function ReadSheets(props) {
+function ReadSheets() {
    // use in 'app.jsx'
    const [displaydata, setdisplaydata] = useState([]);// set type array
    const [StatusCode, setStatusCode] = useState(<>On Load.....</>);
@@ -13,7 +13,7 @@ function ReadSheets(props) {
 
 
    const sheetsfetch = async () => {
-      const sheetsURL = 'https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de--/addData/sheets1';
+      const sheetsURL = 'https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1';
       await axios.get(sheetsURL)
          .then(response => {
             // console.log(response);
@@ -23,7 +23,8 @@ function ReadSheets(props) {
             const resdata = response.data.sheets1
             setdisplaydata(resdata?.map((val, i) => (
                //loop map จำเป็นต้องมี key
-               <tr key={val.i} className="sheets-data-format">
+               <tr key={i} className="sheets-data-format">
+                  <td>{i+3}</td>
                   <td>{val.employeeId}</td>
                   <td>{val.rank}</td>
                   <td >
@@ -35,7 +36,7 @@ function ReadSheets(props) {
                   </td>
                   <td>{val.physicalGender}</td>
                   <td>{val.thaiBirthDate}</td>
-                  <td>{CalculateAge(val.thaiBirthDate)}</td>
+                  <td>{CalculateAge(val.thaiBirthDate)} ปี</td>
                   <td>{val.telephone}</td>
                   <td>{val.email}</td>
                   <td>{val.addTimeStamp}</td>
@@ -79,7 +80,7 @@ function ReadSheets(props) {
    return (
       <>
          <div className="UpdateForm" >{editForm}</div>
-         <div style={{ margin: '0 auto', width: '1420px', 'justify-content': 'center', maxHeight: '300px', overflow: 'hidden scroll' }}>
+         <div style={{ margin: '0 auto', width: '1420px', justifyContent: 'center', maxHeight: '300px', overflow: 'hidden scroll' }}>
             <table >
                <thead>
                   <tr className='table-head'>
@@ -126,7 +127,7 @@ function ReadSheets(props) {
 
 
                   {/* // */}
-                  {Array.from({ length: 20 }, (_, index) => (
+                  {/* {Array.from({ length: 20 }, (_, index) => (
                      <tr key={index} className="sheets-data-format">
                         <td>fake : {index + 3}</td><td>Test-D45-QJC7F61H</td><td>ระดับ 2 D45</td>
                         <td>
@@ -143,7 +144,7 @@ function ReadSheets(props) {
                            </div>
                         </td>
                      </tr>
-                  ))}
+                  ))} */}
                   {/* // */}
                </tbody>
             </table>
