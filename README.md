@@ -18,7 +18,7 @@
 > npm i
 > ```
 
-> run dev
+> run project
 > ```bush
-> npm i
+> npm run dev
 > ```
