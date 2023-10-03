@@ -10,6 +10,7 @@ function ReadSheets() {
    const [displaydata, setdisplaydata] = useState([]);// set type array
    const [StatusCode, setStatusCode] = useState(<>On Load.....</>);
    const [editForm, seteditForm] = useState(<></>);
+   const [apiError,setapiError]= useState(true)
 
 
    const sheetsfetch = async () => {
@@ -48,6 +49,7 @@ function ReadSheets() {
                   </td>
                </tr>
             )))
+            setapiError(false)
          })
          .catch(error => {// ดักจับและจัดการกับ errors ที่เกิดขึ้นในการ request
             // set usestate [displaydata] เป็นค่าว่าง ถ้าเกิด Error
@@ -57,8 +59,7 @@ function ReadSheets() {
                const sheetyUpgrade = <a href="https://dashboard.sheety.co/upgrade" target="_blank" rel="noopener noreferrer">sheety upgrade</a>
                // มี response กลับมาแต่ status code เป็น error
                if (error.response.status == 402) {
-                  const sheetLink = <a href={sheetyUpgrade} target='_blank'>{sheetyUpgrade}</a>
-                  setStatusCode(<>Status Code: {error.response.status}<br />This Free Account Over Requests (Max 200 per/Month)<br />{sheetLink}</>);
+                  setStatusCode(<>Status Code: {error.response.status}<br />This Free Account Over Requests (Max 200 per/Month)<br />{sheetyUpgrade}</>);
                }
                else {
                   setStatusCode(<>Status Code: {error.response.status}</>);
@@ -80,7 +81,8 @@ function ReadSheets() {
    return (
       <>
          <div className="UpdateForm" >{editForm}</div>
-         <div style={{ margin: '0 auto', width: '1420px', justifyContent: 'center', maxHeight: '300px', overflow: 'hidden scroll' }}>
+         <div style={{display:'flex', justifyContent: 'center'}}>
+         <div style={{display:'flex', maxHeight: '300px', overflow: 'hidden scroll' }}>
             <table >
                <thead>
                   <tr className='table-head'>
@@ -127,11 +129,11 @@ function ReadSheets() {
 
 
                   {/* // */}
-                  {/* {Array.from({ length: 20 }, (_, index) => (
+                  {apiError? Array.from({ length: 20 }, (_, index) => (
                      <tr key={index} className="sheets-data-format">
-                        <td>fake : {index + 3}</td><td>Test-D45-QJC7F61H</td><td>ระดับ 2 D45</td>
+                        <td>fake : {index + 3}</td><td>Test-ERR-Error</td><td>ระดับ 0 ERR</td>
                         <td>
-                           <p className="fullname"><span>นาง</span><span>ณิชา</span><span>วัฒนศักดิ์สกุล</span></p>
+                           <p className="fullname"><span>test</span><span>test{index + 3}</span><span>test{index + 10}</span></p>
                         </td>
                         <td>aaa{index + 1}{index + 1}</td><td>bbb{index + 1}{index + 1}</td><td>{(index + 1) * 3} ปี</td>
                         <td>ccc{index + 1}{index + 1}{index + 1}</td>
@@ -144,10 +146,11 @@ function ReadSheets() {
                            </div>
                         </td>
                      </tr>
-                  ))} */}
+                  )):<noscript></noscript>}
                   {/* // */}
                </tbody>
             </table>
+         </div>
          </div>
       </>
    )

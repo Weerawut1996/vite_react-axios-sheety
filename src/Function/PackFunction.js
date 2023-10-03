@@ -15,7 +15,6 @@ export function convertDate(inputDate) {
    var day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
    var month = parts[1];
    var year = +parts[2];// แปลงเป็น int
-   console.log(year);
    if (year > 2700) {
       // ถ้า ใน input[type=date] คือ 25/9/2566
       // new Date(Birth_date).toLocaleDateString('th-TH') จะบวกเพิ่มไปอีก 543
@@ -26,7 +25,6 @@ export function convertDate(inputDate) {
    if (year < 2000) {
       year += 543
    }
-   console.log(year);
    // รายการของชื่อเดือน
    var monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
    // แปลงเดือนเป็นชื่อเดือน

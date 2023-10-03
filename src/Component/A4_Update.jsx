@@ -65,7 +65,12 @@ const UpdateSheet = (props) => {
             setE_Form()
          })
          .catch(function (error) {
-            console.log(error);
+            if (error.response.status == 402) {
+               console.log(`Error : ${error.response.status} maximum requests`);
+            }
+            else{
+               console.log(error);
+            }
          });
    }
 
