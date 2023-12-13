@@ -9,7 +9,7 @@ const DeleteSheet = async (id) => {
       }
       //del
       try {
-         const response = await axios.delete('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1/' + id);
+         const response = await axios.delete('https://api.sheety.co/...' + id);
          console.log(response);// รอ const response
          updateTable();
       } catch (error) {

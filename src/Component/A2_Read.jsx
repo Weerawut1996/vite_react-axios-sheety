@@ -14,7 +14,7 @@ function ReadSheets() {
 
 
    const sheetsfetch = async () => {
-      const sheetsURL = 'https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1';
+      const sheetsURL = 'https://api.sheety.co/...';
       await axios.get(sheetsURL)
          .then(response => {
             // console.log(response);
@@ -83,7 +83,7 @@ function ReadSheets() {
          <div className="UpdateForm" >{editForm}</div>
          <div style={{display:'flex', justifyContent: 'center'}}>
          <div style={{display:'flex', maxHeight: '300px', overflow: 'hidden scroll' }}>
-            <table >
+            <table>
                <thead>
                   <tr className='table-head'>
                      <th>No.</th>

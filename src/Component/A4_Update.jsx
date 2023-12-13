@@ -59,7 +59,7 @@ const UpdateSheet = (props) => {
          }
       };
       console.log(newData.sheets1);
-      axios.put(`https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1/${props.data.id}`, newData)
+      axios.put(`https://api.sheety.co/.../${props.data.id}`, newData)
          .then(() => {
             console.log('%c..', 'background: green; color: green;', 'Update ok and complete');
             setE_Form()

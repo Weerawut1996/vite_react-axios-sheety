@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { TelephoneFormat, filterSymbols, RandomId, convertDate } from '../Function/PackFunction';
 
 
-
-
 const CreateSheets = (props) => {
    // use in 'app.jsx'
    const [Prefix, setPrefix] = useState('0')
@@ -20,7 +18,7 @@ const CreateSheets = (props) => {
 
    async function add(e) {
       e.preventDefault() // e.preventDefault() ไว้ป้องกัน event web refed เมื่อกด supmit จาก form      
-      const response = await axios.get('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de--/addData/sheets1');
+      const response = await axios.get('https://api.sheety.co/...');
       // console.log(response.data.sheets1);
       let emp_Id = []
       for (const emp of response.data.sheets1) { emp_Id.push(emp.employeeId); }
@@ -54,7 +52,7 @@ const CreateSheets = (props) => {
             addTimeStamp: `${convertDate(today)} ${new Date().toLocaleTimeString().substring(0, 5)}`
          }
       };
-      axios.post('https://api.sheety.co/4ca9ed09b8eddce654c9316dcee071de/addData/sheets1', newData)
+      axios.post('https://api.sheety.co/...', newData)
          .then(() => {
             console.log('%c..', 'background: green; color: green;', 'Create ok and complete');
             updateTable()
