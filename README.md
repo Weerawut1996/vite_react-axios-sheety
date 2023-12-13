@@ -9,16 +9,16 @@
 
 
 > install project setting (package.json)
-> ```bush
+> ```console
 > npm init
 > ```
 
 > install node_modules
-> ```bush
+> ```console
 > npm i
 > ```
 
 > run project
-> ```bush
+> ```console
 > npm run dev
 > ```
