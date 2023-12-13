@@ -11,10 +11,10 @@ export function RandomId(length) {
 export function convertDate(inputDate) {
    // ตัวอย่างค่าที่รับ 25/9/2566 จาก new Date(1996-09-25).toLocaleDateString('th-TH')
    // แยกวันที่, เดือน และปี พ.ศ.
-   var parts = inputDate.split('/');
-   var day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
-   var month = parts[1];
-   var year = +parts[2];// แปลงเป็น int
+   let parts = inputDate.split('/');
+   let day = parts[0] < 10 ? `0${parts[0]}` : parts[0];
+   let month = parts[1];
+   let year = +parts[2];// แปลงเป็น int
    if (year > 2700) {
       // ถ้า ใน input[type=date] คือ 25/9/2566
       // new Date(Birth_date).toLocaleDateString('th-TH') จะบวกเพิ่มไปอีก 543
@@ -26,11 +26,11 @@ export function convertDate(inputDate) {
       year += 543
    }
    // รายการของชื่อเดือน
-   var monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
+   const monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
    // แปลงเดือนเป็นชื่อเดือน
-   var monthName = monthNames[parseInt(month) - 1];
+   let monthName = monthNames[parseInt(month) - 1];
    // สร้างรูปแบบวันที่
-   var result = day + " " + monthName + " " + year;
+   let result = day + " " + monthName + " " + year;
    return result;
 }
 
